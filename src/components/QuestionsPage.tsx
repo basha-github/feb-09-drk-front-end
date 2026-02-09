@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import '../css/question.css'
+
+
+var i=0;
 
 export default function QuestionsPage() {
 
@@ -23,7 +26,7 @@ export default function QuestionsPage() {
 
             },
             {
-                "qtitle": "1. Who invented Java Programming?",
+                "qtitle": "3. Who invented Java Programming?",
                 "optA": "a) Guido van Rossum",
                 "optB": "b) James Gosling",
                 "optC": "c) Dennis Ritchie",
@@ -31,7 +34,7 @@ export default function QuestionsPage() {
 
             },
             {
-                "qtitle": "1. Who invented Java Programming?",
+                "qtitle": "4. Who invented Java Programming?",
                 "optA": "a) Guido van Rossum",
                 "optB": "b) James Gosling",
                 "optC": "c) Dennis Ritchie",
@@ -42,34 +45,62 @@ export default function QuestionsPage() {
 
 
 
+const gotoNext = ()=>{
+    i++;
+    i=i>3?3:i;
+    setIndex(i);
+    console.log("i--->"+i);
+    
+}
+
+const gotoPrev = ()=>{
+    i--;
+    i=i<0?0:i;
+    setIndex(i);
+    console.log("i--->"+i);
+    
+}
 
 
-
-
+const [index,setIndex] = useState(0);
 
     return (
         <div className='questiomMargin'>
 
 
-            {question[1].qtitle}
+            {question[index].qtitle}
             <br></br>
             <br></br>
 
             <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[1].optA}
+            {question[index].optA}
             <br></br>
             <br></br>
 
             <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[1].optB}
+            {question[index].optB}
             <br></br>
             <br></br>
             <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[1].optC}
+            {question[index].optC}
             <br></br>
             <br></br>
             <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[1].optD}
+            {question[index].optD}
+            <br></br>
+            <br></br>
+            <div className='npbutton'>
+
+                  <button
+                onClick={gotoPrev}
+                type="button"
+                 className="btn btn-primary npbutton">Prev</button>
+            
+                <button
+                onClick={gotoNext}
+                type="button" className="btn btn-primary">Next</button>
+
+               </div>
 
         </div>
     )
