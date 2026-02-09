@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
 import '../css/question.css'
-import QPallete from './QPallete';
 
 
-var i=0;
+
+var i = 0;
 
 export default function QuestionsPage() {
 
@@ -172,73 +172,98 @@ export default function QuestionsPage() {
             }
         ]
 
+    const showButton = (k: number) => {
+        console.log("k--->" + k);
+        setIndex(k - 1);
+    }
+
+    const gotoNext = () => {
+        i++;
+        i = i > 3 ? 3 : i;
+        setIndex(i);
+        console.log("i--->" + i);
+
+    }
+
+    const gotoPrev = () => {
+        i--;
+        i = i < 0 ? 0 : i;
+        setIndex(i);
+        console.log("i--->" + i);
+
+    }
+
+    const qno = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 
-const gotoNext = ()=>{
-    i++;
-    i=i>3?3:i;
-    setIndex(i);
-    console.log("i--->"+i);
-    
-}
-
-const gotoPrev = ()=>{
-    i--;
-    i=i<0?0:i;
-    setIndex(i);
-    console.log("i--->"+i);
-    
-}
-
-
-
-const [index,setIndex] = useState(0);
+    const [index, setIndex] = useState(0);
 
     return (
         <div>
 
-         <QPallete />
-           
-<div className='questiomMargin'>
+            <div className='qp'>
+
+                <div>
+                    {qno.map(
+                        (i) => (
+                            i % 5 == 0 ? <>
+                                <button
+                                    onClick={() => { showButton(i) }}
+                                    type="button"
+                                    className="btn btn-warning qpbutton">{i}</button>
+
+                                <br></br><br></br></> :
+                                <button
+                                    onClick={() => { showButton(i) }}
+                                    type="button"
+                                    className="btn btn-warning qpbutton">{i}</button>
+                        )
+                    )}
+                </div>
 
 
-            {question[index].qtitle}
-            <br></br>
-            <br></br>
+            </div>
 
-            <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[index].optA}
-            <br></br>
-            <br></br>
+            <div className='questiomMargin'>
 
-            <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[index].optB}
-            <br></br>
-            <br></br>
-            <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[index].optC}
-            <br></br>
-            <br></br>
-            <input type="checkbox" />&nbsp;&nbsp;&nbsp;
-            {question[index].optD}
-            <br></br>
-            <br></br>
-            <div className='npbutton'>
 
-                  <button
-                onClick={gotoPrev}
-                type="button"
-                 className="btn btn-primary npbutton">Prev</button>
-            
-                <button
-                onClick={gotoNext}
-                type="button" className="btn btn-primary">Next</button>
+                {question[index].qtitle}
+                <br></br>
+                <br></br>
 
-               </div>
+                <input type="checkbox" />&nbsp;&nbsp;&nbsp;
+                {question[index].optA}
+                <br></br>
+                <br></br>
+
+                <input type="checkbox" />&nbsp;&nbsp;&nbsp;
+                {question[index].optB}
+                <br></br>
+                <br></br>
+                <input type="checkbox" />&nbsp;&nbsp;&nbsp;
+                {question[index].optC}
+                <br></br>
+                <br></br>
+                <input type="checkbox" />&nbsp;&nbsp;&nbsp;
+                {question[index].optD}
+                <br></br>
+                <br></br>
+                <div className='npbutton'>
+
+                    <button
+                        onClick={gotoPrev}
+                        type="button"
+                        className="btn btn-primary npbutton">Prev</button>
+
+                    <button
+                        onClick={gotoNext}
+                        type="button" className="btn btn-primary">Next</button>
+
+                </div>
+
+            </div>
 
         </div>
 
-        </div>
-        
     )
 }
