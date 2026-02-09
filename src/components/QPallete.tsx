@@ -13,7 +13,7 @@ export default function QPallete() {
  <div>
                 {qno.map(
                     (i)=>(
-                        i % 5 == 0?<div></div>:
+                        i % 5 == 0?<div><br></br></div>:
                         <button
                          type="button" 
                          className="btn btn-warning qpbutton">{i}</button>
