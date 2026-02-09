@@ -1,10 +1,19 @@
 .questiomMargin{
 
-    margin-top: 200px;
+    margin-top: 20px;
     margin-left: 200px;
 }
 
 .npbutton{
     margin-right: 200px;
 
+}
+
+.qp{
+    margin-left: 800px;
+    margin-top: 40px;
+}
+
+.qpbutton{
+    margin-right: 20px;
 }
