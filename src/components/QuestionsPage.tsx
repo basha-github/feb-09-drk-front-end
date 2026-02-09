@@ -179,7 +179,7 @@ export default function QuestionsPage() {
 
     const gotoNext = () => {
         i++;
-        i = i > 3 ? 3 : i;
+        i = i > 19 ? 3 : i;
         setIndex(i);
         console.log("i--->" + i);
 
